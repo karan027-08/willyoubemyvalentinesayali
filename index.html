@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A romantic Valentine's Day proposal website">
+    <meta name="theme-color" content="#1f1b2e">
+    <title>Will You Be My Valentine? 💕</title>
+
+    <!-- Webfonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Landing Section -->
+    <div id="landing" class="screen active">
+        <header class="top-bar">
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </header>
+
+        <main class="hero">
+            <h1 class="hero-title" data-animate="letter-reveal">
+                Will You Be My Valentine?
+                <span class="heart-icon" aria-hidden="true">❤️</span>
+            </h1>
+            <p class="hero-subtitle" data-placeholder="subhead">
+                Because every day with you feels like February 14th
+            </p>
+
+            <div class="button-group">
+                <button id="yes-btn" class="btn btn-primary" aria-label="Yes, I will be your Valentine">
+                    YES
+                </button>
+                <button id="no-btn" class="btn btn-secondary" aria-label="No">
+                    NO
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Success Section -->
+    <div id="success" class="screen">
+        <!-- Decorative hearts and stars -->
+        <div class="floating-decorations">
+            <span class="decoration heart">❤️</span>
+            <span class="decoration heart">💕</span>
+            <span class="decoration heart">💖</span>
+            <span class="decoration heart">💗</span>
+            <span class="decoration star">✨</span>
+            <span class="decoration star">⭐</span>
+            <span class="decoration star">🌟</span>
+            <span class="decoration star">💫</span>
+            <span class="decoration heart">❤️</span>
+            <span class="decoration star">✨</span>
+            <span class="decoration heart">💕</span>
+            <span class="decoration star">⭐</span>
+        </div>
+        
+        <div class="success-content glass-card">
+            <h2 class="success-title" data-animate="fade-in">
+                🎉 You said YES! 🎉
+            </h2>
+
+            <div class="message-sequence">
+                <p class="message" data-delay="1000"></p>
+                <p class="message" data-delay="3000"></p>
+                <p class="message" data-delay="5000"></p>
+            </div>
+
+            <div class="photo-gallery" id="photo-gallery">
+                <!-- Photos will be dynamically inserted -->
+            </div>
+
+            <div class="memory-timeline" id="memory-timeline">
+                <!-- Memories will be dynamically inserted -->
+            </div>
+        </div>
+
+        <div class="audio-player" id="audio-player">
+            <button id="play-pause" class="audio-btn" aria-label="Play">
+                <span>▶️</span>
+            </button>
+            <input type="range" id="volume" min="0" max="100" value="50" aria-label="Volume control">
+            <span class="volume-icon">🔊</span>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <dialog id="settings-modal" class="modal">
+        <div class="modal-content glass-card">
+            <header class="modal-header">
+                <h2>Customize Your Valentine 💕</h2>
+                <button class="close-btn" id="close-settings" aria-label="Close settings">×</button>
+            </header>
+
+            <form id="settings-form">
+                <section class="form-section">
+                    <h3>Personalization</h3>
+                    <div class="form-group">
+                        <label for="lover_name">Their Name</label>
+                        <input type="text" id="lover_name" name="lover_name" placeholder="My Valentine">
+                    </div>
+                    <div class="form-group">
+                        <label for="your_name">Your Name</label>
+                        <input type="text" id="your_name" name="your_name" placeholder="Me">
+                    </div>
+                    <div class="form-group">
+                        <label for="special_place">Special Place</label>
+                        <input type="text" id="special_place" name="special_place" placeholder="our favorite spot">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Special Date</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="memory">Favorite Memory</label>
+                        <input type="text" id="memory" name="memory" placeholder="that perfect day">
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h3>Messages</h3>
+                    <div class="form-group">
+                        <label for="subhead">Landing Subtitle</label>
+                        <textarea id="subhead" name="subhead" rows="2"
+                            placeholder="Because every day with you feels like February 14th"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="theme_tone">Message Tone</label>
+                        <select id="theme_tone" name="theme_tone">
+                            <option value="cute">Cute 🥰</option>
+                            <option value="dramatic">Dramatic 💫</option>
+                            <option value="poetic">Poetic ✨</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="form-section">
+                    <h3>Photos</h3>
+                    <div id="photo-uploader" class="photo-uploader">
+                        <!-- Photo list will be dynamically inserted -->
+                    </div>
+                    <button type="button" id="add-photo" class="btn btn-secondary btn-small">+ Add Photo</button>
+                </section>
+
+                <section class="form-section">
+                    <h3>Background Music</h3>
+                    <div class="form-group">
+                        <label for="music-upload">Upload Audio File</label>
+                        <input type="file" id="music-upload" name="music" accept="audio/*">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="audio-enabled" name="audio_enabled" checked>
+                            Enable background music
+                        </label>
+                    </div>
+                </section>
+
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </dialog>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">×</button>
+        <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous photo">‹</button>
+        <button class="lightbox-next" id="lightbox-next" aria-label="Next photo">›</button>
+        <img class="lightbox-image" id="lightbox-image" src="" alt="">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- Unmute Prompt -->
+    <div id="unmute-prompt" class="unmute-prompt glass-card" style="display: none;">
+        <p>🎵 Play background music?</p>
+        <div class="button-group">
+            <button id="unmute-yes" class="btn btn-primary btn-small">Yes</button>
+            <button id="unmute-no" class="btn btn-secondary btn-small">No</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
