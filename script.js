@@ -59,12 +59,12 @@ const StateManager = {
       }
     },
     photos: [
-      { url: 'photos/First Date.jpg', caption: 'Our first date at {{special_place}}', alt: 'Romantic couple moment' },
-      { url: 'photos/Sunset.jpg', caption: 'That sunset we\'ll never forget', alt: 'Beautiful sunset' },
-      { url: 'photos/Laugh.jpeg', caption: 'When {{lover_name}} made me laugh', alt: 'Happy couple laughing' },
-      { url: 'photos/beach.jpeg', caption: 'Perfect day at the beach', alt: 'Beach memories' },
-      { url: 'photos/Adventure.jpg', caption: 'Adventures with you', alt: 'Adventure together' },
-      { url: 'photos/moment.jpeg', caption: 'Every moment with {{your_name}}', alt: 'Romantic moment' }
+      { url: 'First Date.jpg', caption: 'Our first date at {{special_place}}', alt: 'Romantic couple moment' },
+      { url: 'Sunset.jpg', caption: 'That sunset we\'ll never forget', alt: 'Beautiful sunset' },
+      { url: 'Laugh.jpeg', caption: 'When {{lover_name}} made me laugh', alt: 'Happy couple laughing' },
+      { url: 'beach.jpeg', caption: 'Perfect day at the beach', alt: 'Beach memories' },
+      { url: 'Adventure.jpg', caption: 'Adventures with you', alt: 'Adventure together' },
+      { url: 'moment.jpeg', caption: 'Every moment with {{your_name}}', alt: 'Romantic moment' }
     ],
     audio: {
       url: '',
@@ -1415,3 +1415,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
