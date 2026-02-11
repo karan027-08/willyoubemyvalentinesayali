@@ -59,12 +59,12 @@ const StateManager = {
       }
     },
     photos: [
-           { url: 'First Date.jpg', caption: 'Our first date at {{special_place}}', alt: 'Romantic couple moment' },
-      { url: 'Sunset.jpg', caption: 'That sunset we\'ll never forget', alt: 'Beautiful sunset' },
-      { url: 'Laugh.jpeg', caption: 'When {{lover_name}} made me laugh', alt: 'Happy couple laughing' },
-      { url: 'beach.jpeg', caption: 'Perfect day at the beach', alt: 'Beach memories' },
-      { url: 'Adventure.jpg', caption: 'Adventures with you', alt: 'Adventure together' },
-      { url: 'moment.jpeg', caption: 'Every moment with {{your_name}}', alt: 'Romantic moment' }
+      { url: 'photos/First Date.jpg', caption: 'Our first date at {{special_place}}', alt: 'Romantic couple moment' },
+      { url: 'photos/Sunset.jpg', caption: 'That sunset we\'ll never forget', alt: 'Beautiful sunset' },
+      { url: 'photos/Laugh.jpeg', caption: 'When {{lover_name}} made me laugh', alt: 'Happy couple laughing' },
+      { url: 'photos/beach.jpeg', caption: 'Perfect day at the beach', alt: 'Beach memories' },
+      { url: 'photos/Adventure.jpg', caption: 'Adventures with you', alt: 'Adventure together' },
+      { url: 'photos/moment.jpeg', caption: 'Every moment with {{your_name}}', alt: 'Romantic moment' }
     ],
     audio: {
       url: '',
@@ -350,6 +350,7 @@ const NoButtonController = {
     this.button = button;
     this.button.addEventListener('mouseenter', (e) => this.handleHover(e));
     this.button.addEventListener('click', (e) => this.handleClick(e));
+    this.button.addEventListener('touchstart', (e) => this.handleClick(e));
     this.button.addEventListener('keydown', (e) => this.handleKeyboard(e));
   },
 
@@ -1120,7 +1121,6 @@ const UIController = {
       yesBtn: document.getElementById('yes-btn'),
       noBtn: document.getElementById('no-btn'),
       themeToggle: document.getElementById('theme-toggle'),
-      downloadBtn: document.getElementById('download-btn'),
       photoGallery: document.getElementById('photo-gallery'),
       heroSubtitle: document.querySelector('.hero-subtitle'),
       successTitle: document.querySelector('.success-title'),
@@ -1134,7 +1134,6 @@ const UIController = {
   bindEvents() {
     this.elements.yesBtn.addEventListener('click', () => this.handleYesClick());
     this.elements.themeToggle.addEventListener('click', () => this.toggleTheme());
-    this.elements.downloadBtn.addEventListener('click', () => ECardGenerator.generate());
 
     // Initialize NO button controller
     NoButtonController.init(this.elements.noBtn);
@@ -1416,5 +1415,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-
